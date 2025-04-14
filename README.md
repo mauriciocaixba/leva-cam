@@ -9,3 +9,4 @@ from DiskCamMechanismLibrary import *
 
 See the examples for clarity of usage.
 
+Note: The requeriments are mainly focus on the presence of ```numpy``` and ```matplotlib```.
