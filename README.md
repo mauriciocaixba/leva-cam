@@ -7,5 +7,5 @@ To run, pull down the repo, install the requirements.txt file with pip or conda,
 from DiskCamMechanismLibrary import *
 ```
 
-
+See the examples for clarity of usage.
 
