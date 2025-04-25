@@ -1,0 +1,1 @@
+En este directorio se encuentran ejemplos que ilustran el uso de la librería DiskCamMechanismLibrary, esta se encuentra en el directorio principal, al ejecutar es suficiente con que la librería se encuentre en el mismo directorio del archivo ejemplo que desee ejecutar.
