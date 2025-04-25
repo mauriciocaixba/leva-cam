@@ -1,0 +1,1 @@
+In this directory you will find examples that illustrate the use of the DiskCamMechanismLibrary module, which is located in the main directory. When running it is sufficient that the library is in the same directory as the example file you wish to run.
