@@ -23,6 +23,8 @@ classes
 4. PDCamOscillatingRollerFollower(**DataCam)
     Planar Disk Cam with Roller Oscilatory Follower
     
+5. PDCamOscillatingFlatFollower(**DataCam)
+    Planar Disk Cam with Flat-Face Oscilatory Follower
 
 For further explanation, please see the corresponding documentation.
 
