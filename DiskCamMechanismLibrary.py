@@ -113,7 +113,15 @@ class PDCamKnifeFollower:
     CenterCamFgColor : str or color array
         Foreground color of the center Cam according to matplotlib's color format
         
-    
+    graph1color : str or color array
+        Displacement diagram color according to matplotlib's color format
+
+    graph2color : str or color array
+        Velocity diagram color according to matplotlib's color format
+
+    graph3color : str or color array
+        Acceleration diagram color according to matplotlib's color format
+
     Attributes
     -----------
     Xp : data-type
@@ -181,7 +189,10 @@ class PDCamKnifeFollower:
         self.KnifeFollowerColor='brown'
         self.BlockGuideColor='darkslategray'
         self.CenterCamBgColor=[0.1,0.1,0.4]
-        self.CenterCamFgColor='yellowgreen'        
+        self.CenterCamFgColor='yellowgreen'
+        self.graph1color = "#000080"
+        self.graph2color = "#008000"
+        self.graph3color = "#800000"        
         """
         Updating input arguments
         """
@@ -234,14 +245,14 @@ class PDCamKnifeFollower:
                 More elements can be added by the user to such axes.
         """        
         axes=fig.subplots(3,1, sharex=True)    
-        axes[0].plot(self.theta,self.y)
-        axes[0].set_title('Displacement Diagram')
+        axes[0].plot(self.theta,self.y,color=self.graph1color,linewidth=2)
+        axes[0].set_title('Displacement Diagram',color=self.graph1color)
         axes[0].grid(True)
-        axes[1].plot(self.theta,self.yp)
-        axes[1].set_title('Velocity Diagram')
+        axes[1].plot(self.theta,self.yp,color=self.graph2color,linewidth=2)
+        axes[1].set_title('Velocity Diagram',color=self.graph2color)
         axes[1].grid(True)
-        axes[2].plot(self.theta,self.ypp)
-        axes[2].set_title('Acceleration Diagram')
+        axes[2].plot(self.theta,self.ypp,color=self.graph3color,linewidth=2)
+        axes[2].set_title('Acceleration Diagram',color=self.graph3color)
         axes[2].set(xlabel='Angle [radians]')
         axes[2].grid(True)              
         
@@ -761,7 +772,15 @@ class PDCamRollerFollower:
         
     CenterCamFgColor : str or color array
         Foreground color of the center Cam according to matplotlib's color format
-        
+    
+    graph1color : str or color array
+        Displacement diagram color according to matplotlib's color format
+
+    graph2color : str or color array
+        Velocity diagram color according to matplotlib's color format
+
+    graph3color : str or color array
+        Acceleration diagram color according to matplotlib's color format
     
     Attributes
     -----------
@@ -833,7 +852,10 @@ class PDCamRollerFollower:
         self.RollerColor=[0.1,0.1,0.4]
         self.BlockGuideColor='darkslategray'
         self.CenterCamBgColor=[0.1,0.1,0.4]
-        self.CenterCamFgColor='yellowgreen'        
+        self.CenterCamFgColor='yellowgreen'
+        self.graph1color = "#000080"
+        self.graph2color = "#008000"
+        self.graph3color = "#800000"        
         """
         Updating Mandatory arguments
         """
@@ -887,14 +909,14 @@ class PDCamRollerFollower:
                 More elements can be added by the user to such axes.
         """       
         axes=fig.subplots(3,1, sharex=True)    
-        axes[0].plot(self.theta,self.y)
-        axes[0].set_title('Displacement Diagram')
+        axes[0].plot(self.theta,self.y,color=self.graph1color,linewidth=2)
+        axes[0].set_title('Displacement Diagram',color=self.graph1color)
         axes[0].grid(True)
-        axes[1].plot(self.theta,self.yp)
-        axes[1].set_title('Velocity Diagram')
+        axes[1].plot(self.theta,self.yp,color=self.graph2color,linewidth=2)
+        axes[1].set_title('Velocity Diagram',color=self.graph2color)
         axes[1].grid(True)
-        axes[2].plot(self.theta,self.ypp)
-        axes[2].set_title('Acceleration Diagram')
+        axes[2].plot(self.theta,self.ypp,color=self.graph3color,linewidth=2)
+        axes[2].set_title('Acceleration Diagram',color=self.graph3color)
         axes[2].set(xlabel='Angle [radians]')
         axes[2].grid(True)              
         
@@ -1481,6 +1503,14 @@ class PDCamFlatFaceFollower():
     CenterCamFgColor : str or color array
         Foreground color of the center Cam according to matplotlib's color format
         
+    graph1color : str or color array
+        Displacement diagram color according to matplotlib's color format
+
+    graph2color : str or color array
+        Velocity diagram color according to matplotlib's color format
+
+    graph3color : str or color array
+        Acceleration diagram color according to matplotlib's color format
     
     Attributes
     -----------
@@ -1543,7 +1573,10 @@ class PDCamFlatFaceFollower():
         self.FlatFollowerColor='brown'
         self.BlockGuideColor='darkslategray'
         self.CenterCamBgColor=[0.1,0.1,0.4]
-        self.CenterCamFgColor='yellowgreen'        
+        self.CenterCamFgColor='yellowgreen'
+        self.graph1color = "#000080"
+        self.graph2color = "#008000"
+        self.graph3color = "#800000"        
         """
         Updating Mandatory arguments
         """
@@ -1596,16 +1629,16 @@ class PDCamFlatFaceFollower():
         """   
         
         axes=fig.subplots(3,1, sharex=True)    
-        axes[0].plot(self.theta,self.y)
-        axes[0].set_title('Displacement Diagram')
+        axes[0].plot(self.theta,self.y,color=self.graph1color,linewidth=2)
+        axes[0].set_title('Displacement Diagram',color=self.graph1color)
         axes[0].grid(True)
-        axes[1].plot(self.theta,self.yp)
-        axes[1].set_title('Velocity Diagram')
+        axes[1].plot(self.theta,self.yp,color=self.graph2color,linewidth=2)
+        axes[1].set_title('Velocity Diagram',color=self.graph2color)
         axes[1].grid(True)
-        axes[2].plot(self.theta,self.ypp)
-        axes[2].set_title('Acceleration Diagram')
+        axes[2].plot(self.theta,self.ypp,color=self.graph3color,linewidth=2)
+        axes[2].set_title('Acceleration Diagram',color=self.graph3color)
         axes[2].set(xlabel='Angle [radians]')
-        axes[2].grid(True)              
+        axes[2].grid(True)             
         
         return axes  
         
@@ -2204,7 +2237,10 @@ class PDCamOscillatingRollerFollower:
         self.RollerColor='olive'
         self.PivotColor='darkslategray'
         self.CenterCamBgColor=[0.1,0.1,0.4]
-        self.CenterCamFgColor='yellowgreen'        
+        self.CenterCamFgColor='yellowgreen'
+        self.graph1color = "#000080"
+        self.graph2color = "#008000"
+        self.graph3color = "#800000"        
         """
         Updating Input arguments
         """
@@ -2255,16 +2291,16 @@ class PDCamOscillatingRollerFollower:
                 More elements can be added by the user to such axes.
         """        
         axes=fig.subplots(3,1, sharex=True)    
-        axes[0].plot(self.theta,self.phi)
-        axes[0].set_title('Angular Displacement Diagram')
+        axes[0].plot(self.theta,self.phi,color=self.graph1color,linewidth=2)
+        axes[0].set_title('Angular Displacement Diagram',color=self.graph1color)
         axes[0].grid(True)
-        axes[1].plot(self.theta,self.phip)
-        axes[1].set_title('Angular Velocity Diagram')
+        axes[1].plot(self.theta,self.phip,color=self.graph2color,linewidth=2)
+        axes[1].set_title('Angular Velocity Diagram',color=self.graph2color)
         axes[1].grid(True)
-        axes[2].plot(self.theta,self.phipp)
-        axes[2].set_title('Angular Acceleration Diagram')
+        axes[2].plot(self.theta,self.phipp,color=self.graph3color,linewidth=2)
+        axes[2].set_title('Angular Acceleration Diagram',color=self.graph3color)
         axes[2].set(xlabel='Angle [radians]')
-        axes[2].grid(True)              
+        axes[2].grid(True)                    
         
         return axes  
    
@@ -2339,8 +2375,6 @@ class PDCamOscillatingRollerFollower:
         self.q=q
         return Xr,Yr,Xp,Yp
     
-    
-    
     def OscRollerFollower(self,xpiv,ypiv,xend,yend):
         """
         OscRollerFollower(xtip,ytip,angle=None)
@@ -2385,13 +2419,11 @@ class PDCamOscillatingRollerFollower:
         yFollower=Follower.imag
         return xFollower, yFollower
     
-    
     def Circle(self,radius,Xcenter,Ycenter):
         from numpy import exp, linspace, pi
         th=linspace(0,360,50)*pi/180
         Circ=radius*exp(1j*th)+Xcenter+1j*Ycenter
         return Circ
-        
         
     def PlotCamOscRollerFollower(self,fig,detailed=True):
         """ 
@@ -2548,5 +2580,463 @@ class PDCamOscillatingRollerFollower:
         ydatRoll=Roller.imag
         datafollower=array([xdatRoll,ydatRoll]).transpose()
         self.rollpol.set_xy(datafollower)
+            
+        return self.poly1, self.poly2
+    
+class PDCamOscillatingFlatFollower:
+    """ 
+    PDCamOscillatingFlatFollower(**CamData)
+    
+    Description
+    ------------
+    
+    This is a design tool for Planar Disk Cam with Angular Oscillating Flat Follower.
+        
+    The main functionalities are:
+        1. It gives a plot with the Motion Diagram.
+        2. It gives the cam's profile data in rectangular coordinates.
+        3. The former data is ploted in a matplotlib Figure.
+        4. Also there is a set of methods which help to animate cam's rotation.
+    
+    Parameters
+    -----------
+    
+    The cam linkage parameters have to be provided via a python dictionary.
+    
+    theta : data-type
+        1D NumPy array with N equal-spaced values between (0,2pi)
+        This variable is the x-axis of the displacement diagram.
+                
+    phi : data-type
+        (1D NumPy array) Follower's angular displacement as function of theta.
+        
+    phip : data-type
+        (1D NumPy array) Follower's angular velocity as function of theta.
+        
+    phipp : data-type
+        (1D NumPy array) Follower's angular aceleration as function of theta.
+        
+    Rbase : float
+        Base circle radius.
+               
+    Rpiv : float
+        Radial distance from de cam center to the Follower's pivot position.
+        
+    Note:                
+        phi, phip and phipp have to be the same length.
+       
+
+    Optional Parameters:
+    --------------------        
+
+    CamAngpos : float
+        Initial Cam angular position , default pi/2 (radians)
+        
+    Pivpos : string
+        Location of the pivot ('right' or 'left'), try both options to see the difference.
+        
+    Followerwidth : float
+        Oscillating Flat Follower width
+
+    Flength : float
+        Follower length       
+      
+    Rhole : float
+        Center mark radius. For make-up purpose.
+        
+    turn_direction : str
+        Direction of rotation ('clockwise' or 'anti-clockwise')
+
+    CamProfileColor : str or color array
+        Cam Profile color according to matplotlib's color format
+        
+    FlatFollowerColor : str or color array
+        Follower color according to matplotlib's color format
+           
+    PivotColor : str or color array
+        Pivot circle color according to matplotlib's color format
+        
+    CenterCamBgColor : str or color array
+        Bakground color of the center Cam according to matplotlib's color format
+        
+    CenterCamFgColor : str or color array
+        Foreground color of the center Cam according to matplotlib's color format
+        
+    
+    Attributes
+    -----------
+   
+    Xp : data-type
+        1D NumPy array which contents a sequence of x-rectangular coordinates
+        that describes the cam profile.
+        
+    Yp : data-type
+        1D NumPy array which contents a sequence of y-rectangular coordinates
+        that describes the cam profile.
+        
+    xFollower : data-type
+        1D NumPy array which contents a sequence of x-rectangular coordinates
+        that describes the Follower geometry at the initial condition.
+        
+    yFollower : data-type
+        1D NumPy array which contents a sequence of y-rectangular coordinates
+        that describes the Follower geometry at the initial condition. 
+    
+    Methods
+    --------
+                    
+    PlotMotionDiagram() 
+        It plots the position, velocity an acceleration of alternating follower
+        as function of the angular displacement.
+     
+  
+   
+    """
+    from numpy import sqrt
+    
+    def __init__(self,**kwargs):
+        from numpy import pi, exp, arccos,cos
+        """
+        numpy and matplotlib have to be installed on the system
+        """
+        self.CamAngpos=pi/2
+        self.Pivpos='right'
+        self.Followerwidth=None
+        self.turn_direction='clockwise'
+        self.CamProfileColor='goldenrod'
+        self.FlatFollowerColor='brown'
+        self.PivotColor='darkslategray'
+        self.CenterCamBgColor=[0.1,0.1,0.4]
+        self.CenterCamFgColor='yellowgreen'
+        self.graph1color = "#000080"
+        self.graph2color = "#008000"
+        self.graph3color = "#800000"
+        """
+        Updating Input arguments
+        """
+        self.__dict__.update(**kwargs)         
+        """
+        Calculating the Cam Profile and initial data
+        """ 
+        
+        self.updateparam()
+        psi0=arccos((self.Rbase+0.5*self.Followerwidth)/self.Rpiv)
+        self.psi0=psi0
+        if self.Pivpos=='right':            
+            Q0=self.Rpiv*exp(1j*(-psi0+self.CamAngpos))
+        else:
+            Q0=self.Rpiv*exp(1j*(psi0+self.CamAngpos))
+        self.xpiv=Q0.real
+        self.ypiv=Q0.imag
+        self.Xp,self.Yp, self.xpivend,self.ypivend=self.CamForOscFlatFollower()
+        
+        xend=self.xpivend[0]
+        yend=self.ypivend[0]
+        self.xFollower, self.yFollower=self.OscFlatFollower(xend,yend)
+
+    def updateparam(self):
+        if self.Followerwidth==None:
+            self.Followerwidth=0.1*self.Rbase
+        
+    def PlotMotionDiagram(self,fig):
+        """PlotMotionDiagram(fig)
+        
+        Description:
+        ------------
+        It plots the Motion diagram associated with the Cam instance
+        
+        Parameters:
+        -----------
+            
+            fig : FigureClass
+                matplotlib figure instance
+                
+                How to get it example
+                
+                >>> from matplotlib.pyplot import figure
+                
+                >>> fig=figure()
+                
+        Return:
+        --------
+        
+            axes : matplotlib.axes._subplots.AxesSubplot object array
+                matplotlib axes array where the diagrams where plotted.
+                More elements can be added by the user to such axes.
+        """        
+        axes=fig.subplots(3,1, sharex=True)    
+        axes[0].plot(self.theta,self.phi,color=self.graph1color,linewidth=2)
+        axes[0].set_title('Angular Displacement Diagram',color=self.graph1color)
+        axes[0].grid(True)
+        axes[1].plot(self.theta,self.phip,color=self.graph2color,linewidth=2)
+        axes[1].set_title('Angular Velocity Diagram',color=self.graph2color)
+        axes[1].grid(True)
+        axes[2].plot(self.theta,self.phipp,color=self.graph3color,linewidth=2)
+        axes[2].set_title('Angular Acceleration Diagram',color=self.graph3color)
+        axes[2].set(xlabel='Angle [radians]')
+        axes[2].grid(True)              
+        
+        return axes  
+   
+    def CamForOscFlatFollower(self):
+        """CamOscFlatFollower()
+        
+        Description
+        ------------
+        
+        It computes the rectangular coordinates of the Cam Profile for
+        a Angular Oscillating Flat Follower.
+        
+        Returns
+        --------
+        
+        Xp : data-type
+            1D NumPy array which contents a sequence of x-rectangular coordinates
+            that describes the cam profile.
+        
+        Yp : data-type
+            1D NumPy array which contents a sequence of x-rectangular coordinates
+            that describes the end follower path sequence.
+        
+        xpivend : data-type
+            1D NumPy array which contents a sequence of y-rectangular coordinates
+            that describes the end follower path sequence.
+         
+        ypivend : data-type    
+        """
+
+        #Note: This method is called within the __init__method and 
+        #its values are stored in the Xp and Yp as attributes.
+
+        from numpy import exp, arctan2, arccos, cos, pi, sin
+        phi=self.phi
+        phip=self.phip
+        th=self.theta
+        Fl=self.Flength
+        Rpiv=self.Rpiv
+        w=self.Followerwidth
+        gamma=self.CamAngpos
+        Pivpos=self.Pivpos       
+        direction=self.turn_direction
+        psi0=self.psi0
+                        
+        
+            
+        if Pivpos=='right':
+            pos=1
+        elif Pivpos=='left':
+            pos=-1
+        else:
+            print('Please specify a valid position (''left'' or ''right'')')
+            print('Default is taken')
+            pos=1
+
+        if direction=='clockwise':
+            rot=1
+        elif direction=='anti-clockwise':
+            rot=-1        
+        else:
+            print('Please specify a valid direction of rotation')
+            print('Default is taken')
+        
+        Q0=Rpiv*exp(1j*pos*(-psi0))
+        z=rot*(pos*Q0.imag*cos(phi)+Q0.real*sin(phi))/(-rot+pos*phip)
+        R=(Q0+1j*pos*z*exp(-1j*pos*phi)-0.5*w*exp(-1j*pos*phi))*exp(1j*(rot*(th)+gamma))
+        Xp=R.real
+        Yp=R.imag
+
+        RLpivend = (self.xpiv+1j*self.ypiv)+Fl*exp(1j*(pos*0.5*pi-pos*phi+gamma))
+        xpivend = RLpivend.real
+        ypivend = RLpivend.imag
+
+        return Xp,Yp, xpivend, ypivend   
+    
+    
+    def OscFlatFollower(self,xend,yend):
+        """
+        OscFlatFollower(xend,yend)
+        
+        Description
+        ------------
+        Gives the rectangular coordinates to render a Matplotlib PolyFill object
+        to represent de angular oscillating flat follower shape. This is an internal method 
+        for use of other internal methods.
+        
+        Parameters
+        ----------
+        xend : float
+            Tip end Follower's x-coordinate position
+            
+        yend : float
+            Tip end Follower's y-coordinate position
+            
+        Returns
+        --------
+        (data-type,data-type) 
+            Tuple with two 1D NumPy array which contents the (x,y)-coordinates of the follower shape at
+            a given position.
+        """
+        from numpy import  pi, piecewise, linspace, cos, sin, absolute
+        width=self.Followerwidth
+        xpiv,ypiv = self.xpiv, self.ypiv        
+        q0=xpiv+1j*ypiv        
+        q1=xend+1j*yend
+        height=absolute(q1-q0)
+        betas=linspace(0,2*pi,50)
+        Xreal=0.5*width*cos(betas)
+        Ximag=piecewise(betas,[betas<pi,betas>=pi],[lambda x: 
+            (0.5*width*sin(x)+height),
+                    lambda x: 0.5*width*sin(x)])
+        X=Xreal+1j*Ximag
+        Follower=1j*(q1-q0)*X/height+q1      
+        xFollower=Follower.real
+        yFollower=Follower.imag
+        return xFollower, yFollower
+    
+    
+    def Circle(self,radius,Xcenter,Ycenter):
+        from numpy import exp, linspace, pi
+        th=linspace(0,360,50)*pi/180
+        Circ=radius*exp(1j*th)+Xcenter+1j*Ycenter
+        return Circ
+        
+        
+    def PlotCamOscFlatFollower(self,fig,detailed=True):
+        """ 
+        PlotCamOscRollerFollower(fig,detailed=True)
+        
+        Description:
+        ------------
+        This plots the Cam Profile with the Angular Oscillating Flat Follower.
+        
+        Parameters:
+        -----------
+            
+            fig : FigureClass
+                matplotlib figure instance
+                
+                How to get it example
+                
+                >>> from matplotlib.pyplot import figure
+                
+                >>> fig=figure()
+                
+            detailed : bool
+                If True, all the decorative elements are depicted, otherwise only
+                the cam profile is rendered with a center mark.
+                
+        Return:
+        --------
+        
+            Axis : matplotlib.axes._subplots.AxesSubplot object
+                matplotlib axis where the forms where plotted.
+                More elements can be added by the user to such axis.        
+       """
+        from numpy import cos,sin
+        Rbase,Rh,theta=self.Rbase,self.Rhole,self.theta
+        xp,yp=self.Xp, self.Yp
+        xf,yf=self.xFollower, self.yFollower
+                           
+        axis=fig.add_subplot(111)
+        axis.fill(xp,yp,color=self.CamProfileColor) 
+        axis.set_aspect('equal')
+        if detailed==True:
+            axis.plot(Rbase*cos(theta),Rbase*sin(theta),'w--')
+            axis.fill(Rh*cos(theta),Rh*sin(theta),'w',linewidth=3)
+            axis.fill(xf,yf,color=self.FlatFollowerColor)
+            axis.plot(0,0,'k+',linewidth=3)
+        else:
+            axis.plot(0,0,'w+',linewidth=3)
+            
+        return axis
+            
+        
+    def initAnim(self, ax):
+        """
+        initAnim(ax)
+        
+        Description
+        ------------
+        Method to initialize the Animation Parameters.
+        
+        Parameters:
+        --------
+        
+            ax : matplotlib.axes._subplots.AxesSubplot object
+                matplotlib axis where the initial geometries will be plotted.        
+        """
+        from numpy import sin, cos, sqrt,linspace, concatenate, exp, pi
+        self.axAnimation=ax
+        
+        # Render Cam Profile
+        self.poly1,=self.axAnimation.fill(self.Xp,self.Yp,color=self.CamProfileColor)
+        
+        
+        # Render Flat Follower
+        self.poly2,=self.axAnimation.fill(self.xFollower,self.yFollower,
+                                          color=self.FlatFollowerColor)
+        
+        # Calculating and rendering the center mark on the cam profile
+        self.axAnimation.fill(self.Rhole*cos(self.theta),self.Rhole*sin(self.theta),
+                              color=self.CenterCamBgColor)        
+        alp1=linspace(45,135,10)*pi/180
+        alp2=linspace(-45,-135,10)*pi/180
+        self.alp=concatenate((alp1,alp2))
+        arc=0.8*self.Rhole*exp(1j*self.alp)        
+        self.artc,=self.axAnimation.fill(arc.real,arc.imag, color=self.CenterCamFgColor)
+        
+        #Calculating and rendering center follower mark
+        ccirc = self.Circle(0.25*self.Followerwidth,self.xpiv,self.ypiv)
+        self.Ccirc,=self.axAnimation.fill(ccirc.real,ccirc.imag, color = self.CenterCamFgColor)
+
+        # Setting the Axes limits according to the dimensions of the main parts of the animation
+        LimCam=max(sqrt((self.Xp**2+self.Yp**2)))
+        LimFllwerx=max(self.xFollower)
+        LimFllwery=max(self.yFollower)
+        Limxp=1.05*max([LimCam,LimFllwerx])
+        Limxn=1.05*min([-LimCam,LimFllwerx])
+        Limyp=1.05*max([LimCam,LimFllwery])
+        Limyn=1.05*min([-LimCam,LimFllwery])        
+        self.axAnimation.set_xlim(Limxn,Limxp)
+        self.axAnimation.set_ylim(Limyn,Limyp)
+        self.axAnimation.set_aspect('equal')
+        
+        return self.poly1, self.poly2
+        
+    def __call__(self,k):
+        """Method to update Animation data
+        """
+        from numpy import mod, exp, array
+        
+        i=5*k
+        ii=mod(i,len(self.theta))
+   
+        # Calculating New center mark and the cam profile data
+        arc=0.8*self.Rhole*exp(1j*self.alp)
+        
+        if self.turn_direction=='clockwise':
+            z=(self.Xp+1j*self.Yp)*exp(-1j*self.theta[ii])            
+            xdata=z.real
+            ydata=z.imag
+            arc=arc*exp(-1j*self.theta[ii]) 
+        elif self.turn_direction=='anti-clockwise':
+            z=(self.Xp+1j*self.Yp)*exp(1j*self.theta[ii])            
+            xdata=z.real
+            ydata=z.imag
+            arc=arc*exp(1j*self.theta[ii])
+        # Updating Cam profile data
+        dataxy=array([xdata,ydata]).transpose()
+        self.poly1.set_xy(dataxy)
+        
+        # Updating center mark data
+        arc_data=array([arc.real,arc.imag]).transpose()               
+        self.artc.set_xy(arc_data)       
+        
+        # Updating Flat Follower data     
+        xend=self.xpivend[ii] 
+        yend=self.ypivend[ii]
+        xkna,ykna=self.OscFlatFollower(xend,yend)
+        datafollower=array([xkna,ykna]).transpose()        
+        self.poly2.set_xy(datafollower)    
             
         return self.poly1, self.poly2
