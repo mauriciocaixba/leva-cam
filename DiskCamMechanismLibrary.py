@@ -1010,10 +1010,13 @@ class PDCamRollerFollower:
             1D NumPy array which contents the pressure angle in radians for each
             cam's angular displacement.        
         """
-        from numpy import absolute, arccos        
-        P=self.P
-        cosphi=P.real/absolute(P)
-        phi=arccos(cosphi)        
+        from numpy import sqrt, arctan,abs,absolute, arccos     
+        y=self.y
+        yp=self.yp
+        eps=abs(self.epsilon)
+        R0=self.Rbase+self.Rroller
+        tanphi=(yp-eps)/(sqrt(R0**2-eps**2)+y)
+        phi=arctan(tanphi)       
         return phi
     
     def PlotPressureAngle(self,Axis):
@@ -1036,9 +1039,14 @@ class PDCamRollerFollower:
             line : matplotlib.lines.Line2D
                 Gives a Line2D instance with x and y data en sequences xdata, ydata.        
         """
-        from numpy import pi
-        phi=self.PressureAngle()*180/pi
-        line,=Axis.plot(self.theta,phi,color='blue')
+        from numpy import pi, max
+        phi=self.PressureAngle()
+        self.pressureangle = phi
+        maximo = max(abs(phi))*180/pi
+        msg="El ángulo de presión máximo es: {0:.2f} grados".format(maximo)
+        print(msg)
+        line,=Axis.plot(self.theta,phi*180/pi,color='crimson',linewidth=2)
+        Axis.grid('on')
         Axis.set_xlabel(r'$\theta$ [rad]')
         Axis.set_ylabel(r'Angle Pressure [degrees]')
         Axis.set_title('Angular displacement vs Angle Pressure')
@@ -2231,12 +2239,12 @@ class PDCamOscillatingRollerFollower:
         numpy and matplotlib have to be installed on the system
         """
         self.PivAngpos=pi/2
-        self.Pivpos='right'
+        self.Pivpos='above'
         self.Followerwidth=None
         self.turn_direction='clockwise'
         self.CamProfileColor='goldenrod'
-        self.RollerFollowerColor='brown'
-        self.RollerColor='olive'
+        self.RollerFollowerColor='maroon'
+        self.RollerColor='crimson'
         self.PivotColor='darkslategray'
         self.CenterCamBgColor=[0.1,0.1,0.4]
         self.CenterCamFgColor='yellowgreen'
@@ -2330,7 +2338,7 @@ class PDCamOscillatingRollerFollower:
         #Note: This method is called within the __init__method and 
         #its values are stored in the Xp and Yp as attributes.
 
-        from numpy import exp, arctan2, arccos
+        from numpy import exp, arctan2, arccos, pi
         phi=self.phi
         phip=self.phip
         th=self.theta
@@ -2353,12 +2361,12 @@ class PDCamOscillatingRollerFollower:
             print('Default is taken')
             rot=1
             
-        if Pivpos=='right':
+        if Pivpos=='below':
             pos=1
-        elif Pivpos=='left':
+        elif Pivpos=='above':
             pos=-1
         else:
-            print('Please specify a valid position (''left'' or ''right'')')
+            print('Please specify a valid position (''above'' or ''below'')')
             print('Default is taken')
             pos=1
             
@@ -2375,7 +2383,85 @@ class PDCamOscillatingRollerFollower:
         Xp=R.real
         Yp=R.imag           
         self.q=q
+        A=Rro*exp(1j*(phi+rot*pi/2))
+        self.p=q+A
         return Xr,Yr,Xp,Yp
+    
+    def PressureAngle(self):
+        """
+        PressureAngle()
+        
+        Description
+        ------------
+        It computes the pressure angle between the follower axis and the cam profile
+        
+        Return
+        ______
+        
+        phi : data-type
+            1D NumPy array which contents the pressure angle in radians for each
+            cam's angular displacement.        
+        """
+        from numpy import sqrt, arctan,abs, exp,angle, arccos
+        direction=self.turn_direction
+        if direction=='clockwise':
+            rot=-1
+        elif direction=='anti-clockwise':
+            rot=1        
+        else:
+            print('Please specify a valid direction of rotation')
+            print('Default is taken')
+            rot=1
+        if self.Pivpos=='below':
+            pos=-1
+        elif self.Pivpos=='above':
+            pos=1
+        else:
+            pos=1
+        Rpiv=self.Rpiv
+        print(Rpiv)
+        Rl=self.Rl
+        Rb=self.Rbase
+        phi=self.phi
+        phip=self.phip
+        calpha = Rl/Rpiv
+        alpha = arccos(calpha)
+        z=1j*rot*(Rpiv-Rl*exp(-1j*pos*(phi+alpha)))+1j*pos*phip*Rl*exp(-1j*pos*(phi+alpha))
+        s=z/(-Rl*exp(-1j*pos*(phi+alpha)))
+        angpres=arccos(abs(s.real)/abs(s))               
+        return angpres
+    
+    def PlotPressureAngle(self,Axis):
+        """
+        PlotPressureAngle(Axis)
+        
+        Description
+        ------------
+        
+        It plots the cam's pressure angle curve.
+        
+        Parameters
+        -----------
+        
+        Axis : matplotlib.axes._subplots.AxesSubplot object
+            matplotlib axis where the pressure angle curve will be plotted.
+
+        Returns:
+            
+            line : matplotlib.lines.Line2D
+                Gives a Line2D instance with x and y data en sequences xdata, ydata.        
+        """
+        from numpy import pi, abs, max
+        phi=self.PressureAngle()*180/pi
+        self.pressureangle = phi
+        angpres_max = max(abs(phi))
+        print('El ángulo de presión máximo es: {0:.2f} grados'.format(angpres_max))
+        line,=Axis.plot(self.theta,phi,color='crimson',linewidth=2)
+        Axis.grid('on')
+        Axis.set_xlabel(r'$\theta$ [rad]')
+        Axis.set_ylabel(r'Angle Pressure [degrees]')
+        Axis.set_title('Angular displacement vs Angle Pressure')
+        return line
     
     def OscRollerFollower(self,xpiv,ypiv,xend,yend):
         """
